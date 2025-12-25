@@ -319,3 +319,69 @@
         box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 </style>
+<section id="order-form" style="max-width: 600px; margin: 50px auto; padding: 30px; background: #1e293b; border-radius: 20px; border: 1px solid #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.1);">
+    <h3 style="text-align: center; color: #fbbf24; margin-bottom: 25px;">Formulir Pesanan Cepat</h3>
+    
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div>
+            <label style="display: block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px;">ID & Server</label>
+            <input type="text" id="user-id" placeholder="Contoh: 12345678 (2021)" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box;">
+        </div>
+
+        <div>
+            <label style="display: block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px;">Nickname</label>
+            <input type="text" id="nickname" placeholder="Masukkan Nickname" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box;">
+        </div>
+
+        <div>
+            <label style="display: block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px;">Paket Joki</label>
+            <select id="package" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box;">
+                <option value="Rank Bintang">Paket Per Bintang</option>
+                <option value="Rank Romawi">Paket Per Romawi</option>
+                <option value="Mythic Placement">Mythic Placement</option>
+                <option value="Custom Joki">Lainnya / Custom</option>
+            </select>
+        </div>
+
+        <button onclick="sendOrder()" style="background: #fbbf24; color: #0f172a; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;">
+            KIRIM KE WHATSAPP SEKARANG
+        </button>
+    </div>
+</section>
+
+<script>
+function sendOrder() {
+    const userId = document.getElementById('user-id').value;
+    const nick = document.getElementById('nickname').value;
+    const pack = document.getElementById('package').value;
+    const myWaNumber = "628123456789"; // GANTI DENGAN NOMOR WA KAMU
+
+    if(userId === "" || nick === "") {
+        alert("Mohon isi ID dan Nickname kamu!");
+        return;
+    }
+
+    const message = `Halo Admin Joki!%0A%0A` +
+                    `Saya ingin order joki dengan detail:%0A` +
+                    `*ID/Server:* ${userId}%0A` +
+                    `*Nickname:* ${nick}%0A` +
+                    `*Paket:* ${pack}%0A%0A` +
+                    `Mohon segera diproses ya!`;
+
+    window.open(`https://wa.me/${myWaNumber}?text=${message}`, '_blank');
+}
+</script>
+
+<style>
+    /* Smooth Scroll agar saat klik link tidak langsung lompat kaget */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Efek fokus pada input form */
+    input:focus, select:focus {
+        outline: none;
+        border-color: #fbbf24 !important;
+        box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+    }
+</style>
